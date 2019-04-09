@@ -1,5 +1,9 @@
 env/
-python/mobile_net_model
-python/xception_model
+mobile_net_model
+xception_model
 package-lock.json
 node_modules
+input/
+output/
+*.png
+*.jpg
