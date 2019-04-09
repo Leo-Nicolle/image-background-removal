@@ -1,0 +1,23 @@
+{
+  "name": "image-background-removal",
+  "version": "1.0.0",
+  "description": "This script removes the background from an input image. You can read more about segmentation [here](http://colab.research.google.com/github/tensorflow/models/blob/master/research/deeplab/deeplab_demo.ipynb)",
+  "main": "index.js",
+  "scripts": {
+    "setup": "cd python && ./setup.sh && cd ../",
+    "run": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leo-Nicolle/image-background-removal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Leo-Nicolle/image-background-removal/issues"
+  },
+  "homepage": "https://github.com/Leo-Nicolle/image-background-removal#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
