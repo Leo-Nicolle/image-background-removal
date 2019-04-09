@@ -18,8 +18,13 @@
   },
   "homepage": "https://github.com/Leo-Nicolle/image-background-removal#readme",
   "dependencies": {
+    "base64-img": "^1.0.4",
+    "base64-to-jpg": "^1.0.1",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "promise-fs": "^2.1.0",
+    "request-json": "^0.6.4",
+    "request-promise-json": "^1.0.4",
     "uuid": "^3.3.2"
   }
 }
