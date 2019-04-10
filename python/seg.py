@@ -22,7 +22,7 @@ class DeepLabModel(object):
     self.graph = tf.Graph()
 
     graph_def = None
-    graph_def = tf.GraphDef.FromString(open("python/models/" + tarball_path + "/frozen_inference_graph.pb", "rb").read())
+    graph_def = tf.GraphDef.FromString(open("models/" + tarball_path + "/frozen_inference_graph.pb", "rb").read())
 
     if graph_def is None:
       raise RuntimeError('Cannot find inference graph in tar archive.')
