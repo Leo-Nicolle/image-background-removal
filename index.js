@@ -6,8 +6,23 @@ const fs = require("promise-fs");
 const uuid = require("uuid/v4");
 const cors = require("cors");
 const app = express();
+const IJS = require("image-js");
 
-app.use(bodyParser.urlencoded({ extended: false }));
+// console.log(faceExtraction);
+// const input = IJS.Image.load("face1.png").then(image => {
+//   faceExtraction.faceDetect(image);
+// });
+
+// app.use(
+//   bodyParser.urlencoded({
+//     extended: false,
+//     json: { limit: "200mb", extended: true },
+//     urlencoded: { limit: "200mb", extended: true }
+//   })
+// );
+app.use(bodyParser.json({ limit: "10mb" }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "10mb" }));
+
 app.use(bodyParser.json());
 app.use(cors());
 
