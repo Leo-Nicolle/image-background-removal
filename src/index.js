@@ -27,16 +27,17 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post("/segment", function(req, res) {
+  console.log("request ");
   const inputName = uuid();
-  const input = `input/${inputName}.png`;
-  const output = `output/${uuid()}.png`;
+  const input = `public/input/${inputName}.png`;
+  const output = `public/output/${uuid()}.png`;
   // write the image in a file
-  base64Img.img(req.body.image, "input/", inputName, (err, filepath) => {
+  base64Img.img(req.body.image, "public/input/", inputName, (err, filepath) => {
     if (err) {
       res.status(500).send("wrong image" + error);
       return;
     }
-    const segmentation = spawn("python", ["seg.py", input, output]);
+    const segmentation = spawn("python", ["./python/seg.py", input, output]);
 
     segmentation.stdout.on("data", data => {
       console.log(`stdout: ${data}`);

@@ -6,7 +6,15 @@
   "scripts": {
     "setup": "cd python && ./setup.sh && cd ../ && pip install -r requirements.txt",
     "run": "node index",
-    "watch": "npx pm2 start index.js --name background-removal --watch"
+    "start-server": ". env/bin/activate && npx pm2 start dist/main.js --name background-removal --watch",
+    "nodemon": "nodemon ./dist/main.js",
+    "watch": "webpack --watch"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "src",
+      "node_modules"
+    ]
   },
   "repository": {
     "type": "git",
@@ -20,21 +28,22 @@
   "homepage": "https://github.com/Leo-Nicolle/image-background-removal#readme",
   "dependencies": {
     "base64-img": "^1.0.4",
-    "base64-to-jpg": "^1.0.1",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "face-api.js": "^0.19.0",
     "image-js": "^0.21.6",
-    "pm2": "^3.5.0",
+    "nodemon": "^1.18.11",
+    "npm-run-all": "^4.1.5",
     "promise-fs": "^2.1.0",
-    "request-json": "^0.6.4",
     "request-promise-json": "^1.0.4",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",
+    "pm2": "^3.5.0",
     "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
     "webpack-livereload-plugin": "^2.2.0"
   }
 }

@@ -22,7 +22,7 @@ class DeepLabModel(object):
     self.graph = tf.Graph()
 
     graph_def = None
-    graph_def = tf.GraphDef.FromString(open(tarball_path + "/frozen_inference_graph.pb", "rb").read())
+    graph_def = tf.GraphDef.FromString(open("python/models/" + tarball_path + "/frozen_inference_graph.pb", "rb").read())
 
     if graph_def is None:
       raise RuntimeError('Cannot find inference graph in tar archive.')
@@ -84,7 +84,7 @@ if inputFilePath is None or outputFilePath is None:
 
 modelType = "mobile_net_model"
 #if len(sys.argv) > 3 and sys.argv[3] == "1":
-modelType = "xception_model"
+# modelType = "xception_model"
 
 MODEL = DeepLabModel(modelType)
 print('model loaded successfully : ' + modelType)
