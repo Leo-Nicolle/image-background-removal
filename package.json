@@ -2,12 +2,13 @@
   "name": "image-background-removal",
   "version": "1.0.0",
   "description": "This script removes the background from an input image. You can read more about segmentation [here](http://colab.research.google.com/github/tensorflow/models/blob/master/research/deeplab/deeplab_demo.ipynb)",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
-    "setup": "cd python && ./setup.sh && cd ../ && pip install -r requirements.txt",
-    "run": "node index",
+    "setup": "./setup.sh && cd ../ && pip install -r requirements.txt",
+    "start":  ". env/bin/activate && node dist/main.js",
     "start-server": ". env/bin/activate && npx pm2 start dist/main.js --name background-removal --watch",
     "nodemon": "nodemon ./dist/main.js",
+    "build": "webpack",
     "watch": "webpack --watch"
   },
   "nodemonConfig": {
