@@ -8,8 +8,8 @@ const cors = require("cors");
 const app = express();
 const IJS = require("image-js");
 
-app.use(bodyParser.json({ limit: "10mb" }));
-app.use(bodyParser.urlencoded({ extended: true, limit: "10mb" }));
+app.use(bodyParser.json({ limit: "100mb" }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "100mb" }));
 
 app.use(bodyParser.json());
 app.use(cors());
