@@ -13,7 +13,12 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "100mb" }));
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send("Something went wrong.");
+});
 
+app.set("base", "leo.displayground.com.au");
 app.post("/segment", function(req, res) {
   console.log("request ");
   const inputName = uuid();
