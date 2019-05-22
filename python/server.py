@@ -1,20 +1,19 @@
-
 #!/usr/bin/env python
 
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
-import SocketServer
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from io import BytesIO
 import seg
 
 
-
+print(BaseHTTPRequestHandler, HTTPServer)
 class S(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
-        self.send_response(204, "ok")
+        self.send_response(200, "ok")
         self.send_header('Access-Control-Allow-Credentials', 'true')
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
         self.send_header("Access-Control-Allow-Headers", "X-Requested-With, Content-type")
+        self.end_headers()
 
     def _set_headers(self, content_length):
         print(content_length)
@@ -40,7 +39,7 @@ class S(BaseHTTPRequestHandler):
 def run(server_class=HTTPServer, handler_class=S, port=3333):
     server_address = ('localhost', port)
     httpd = server_class(server_address, handler_class)
-    print 'Starting http...'
+    print('Starting http...')
     httpd.serve_forever()
 
 if __name__ == "__main__":

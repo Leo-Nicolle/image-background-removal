@@ -4,7 +4,7 @@ This script removes the background from an input image. You can read more about 
 
 ### Setup
 
-**use python 2 !**
+**use python 3 !!**
 
 Install requirements:
 
