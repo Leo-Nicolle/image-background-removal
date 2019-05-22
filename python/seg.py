@@ -72,15 +72,7 @@ def drawSegment(baseImg, matImg):
                 else :
                     dummyImg[y,x] = [r,g,b,255]
   img = Image.fromarray(dummyImg)
-  img.save(outputFilePath)
-
-
-inputFilePath = sys.argv[1]
-outputFilePath = sys.argv[2]
-
-if inputFilePath is None or outputFilePath is None:
-  print("Bad parameters. Please specify input file path and output file path")
-  exit()
+  return img
 
 modelType = "mobile_net_model"
 #if len(sys.argv) > 3 and sys.argv[3] == "1":
@@ -89,21 +81,14 @@ modelType = "mobile_net_model"
 MODEL = DeepLabModel(modelType)
 print('model loaded successfully : ' + modelType)
 
-def run_visualization(filepath):
-  """Inferences DeepLab model and visualizes result."""
-  try:
-  	print("Trying to open : " + sys.argv[1])
-  	# f = open(sys.argv[1])
-  	jpeg_str = open(filepath, "rb").read()
-  	orignal_im = Image.open(BytesIO(jpeg_str))
-  except IOError:
-    print('Cannot retrieve image. Please check file: ' + filepath)
-    return
+def extract_background(binary_data):
+    try:
+    	orignal_im = Image.open(BytesIO(binary_data))
+    except IOError:
+     print('Cannot retrieve image.')
+     return
 
-  print('running deeplab on image %s...' % filepath)
-  resized_im, seg_map = MODEL.run(orignal_im)
+    print('running deeplab on image...')
+    resized_im, seg_map = MODEL.run(orignal_im)
 
-  # vis_segmentation(resized_im, seg_map)
-  drawSegment(resized_im, seg_map)
-
-run_visualization(inputFilePath)
+    return drawSegment(resized_im, seg_map)
