@@ -5,7 +5,6 @@ from io import BytesIO
 import seg
 
 
-print(BaseHTTPRequestHandler, HTTPServer)
 class S(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
         self.send_response(200, "ok")
